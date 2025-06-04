@@ -27,7 +27,17 @@ HUGGINGFACEHUB_API_TOKEN=your_hugging_face_api_key_here
 MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.1
 
 ## Usage
-python app.py
+app.py
+title: QA AGENT
+emoji: 💻
+colorFrom: red
+colorTo: indigo
+sdk: gradio
+sdk_version: 5.32.1
+app_file: app.py
+pinned: false
+license: mit
+short_description: A question answer agent
 
 ## Example Interaction
 User: "What is quantum computing?"
