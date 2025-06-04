@@ -1,0 +1,7 @@
+transformers==4.40.0
+torch
+huggingface_hub
+gradio
+python-dotenv
+smolagents
+beautifulsoup4
