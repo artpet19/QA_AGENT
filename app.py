@@ -1,20 +1,21 @@
 
+# app.py
+# This script sets up a Gradio interface for handling user queries using an LLM tool.
+
+import gradio as gr
 from tools.llm_tools import LLMTool
 
-def main():
+def handle_query(query):
+    if query.lower() == "exit":
+        return "Goodbye!"
+    
     llm_tool = LLMTool()
-    print("Welcome to your AI Agent! Type 'exit' to quit.")
+    response = llm_tool.handle_query(query)
+    
+    ai_answer = response.get("AI Answer", "No response available.")
+    web_sources = response.get("Web Sources", "No sources found.")
+    
+    return f"**AI Answer:** {ai_answer}\n\n🔎 **Web Search Results:**\n{web_sources}"
 
-    while True:
-        query = input("\nAsk a question: ")
-        if query.lower() == "exit":
-            break
-
-        response = llm_tool.handle_query(query)
-        
-        print("\nAI Answer:", response["AI Answer"])
-        print("\n🔎 Web Search Results:")
-        print(response["Web Sources"])
-
-if __name__ == "__main__":
-    main()
+demo = gr.Interface(fn=handle_query, inputs="text", outputs="text")
+demo.launch()
